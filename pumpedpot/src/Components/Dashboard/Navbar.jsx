@@ -8,6 +8,9 @@ import {
     Collapse,
     Image,
     Input,
+    Center,
+    InputGroup,
+    InputLeftElement,
     Icon,
     Link,
     Popover,
@@ -24,11 +27,15 @@ import {
     ChevronRightIcon,
     SearchIcon,
   } from '@chakra-ui/icons';
+  import {
+    FaShoppingBag
+  } from 'react-icons/fa'
   
   export default function WithSubnavigation() {
     const { isOpen, onToggle } = useDisclosure();
   
     return (
+      
       <Box>
         <Flex
           bg={useColorModeValue('white', 'gray.800')}
@@ -63,17 +70,23 @@ import {
           </Flex>
           <Flex flex={{ base: 1 }} justify={{ base: 'center', md: 'start' }}>
           <Stack spacing={3}>
-          <Input placeholder='Search Your items here' size='sm' w='250px'  /> 
+           <InputGroup>
+           <InputLeftElement children={<SearchIcon color="pink.400" />}/>
+          <Input marginleft="10px" placeholder='Search Your items here...' size='sm' w='300px' display={{ base: 'none', md: 'inline-flex' }}  /> 
+           </InputGroup>
            </Stack>
            </Flex>
+
           
           <Stack
             flex={{ base: 1, md: 0 }}
             justify={'flex-end'}
             direction={'row'}
             spacing={6}>
+            <Button bg="white" leftIcon={<FaShoppingBag />}>
+            </Button>
             <Button
-              as={'a'}
+              as={'a'} 
               fontSize={'sm'}
               fontWeight={400}
               variant={'link'}
@@ -100,6 +113,7 @@ import {
           <MobileNav />
         </Collapse>
       </Box>
+     
     );
   }
   
@@ -304,11 +318,12 @@ import {
       href: '#',
     },
     {
-      label: 'Shoes & Bags',
+      label: 'Shoes',
       href: '#',
     },
     {
       label: 'Beauty',
       href: '#',
     },
+    
   ];
